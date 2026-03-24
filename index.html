@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Shriraag Rangu - Portfolio</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,700&family=Sora:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#0a0a0f;
+  --bg-card:#12121a;
+  --bg-card-hover:#1a1a28;
+  --text:#e8e8ed;
+  --text-muted:#8888a0;
+  --accent:#4f8fff;
+  --accent-glow:rgba(79,143,255,0.15);
+  --accent2:#22c997;
+  --border:#1e1e2e;
+  --radius:16px;
+}
+html{scroll-behavior:smooth}
+body{
+  font-family:'DM Sans',sans-serif;
+  background:var(--bg);
+  color:var(--text);
+  line-height:1.65;
+  overflow-x:hidden;
+}
+a{color:var(--accent);text-decoration:none;transition:color .2s}
+a:hover{color:var(--accent2)}
+
+/* ── NAV ── */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  background:rgba(10,10,15,0.85);
+  backdrop-filter:blur(20px);
+  border-bottom:1px solid var(--border);
+  padding:0 2rem;
+}
+nav .inner{
+  max-width:1100px;margin:0 auto;
+  display:flex;align-items:center;justify-content:space-between;
+  height:64px;
+}
+nav .logo{font-family:'Sora',sans-serif;font-weight:700;font-size:1.15rem;letter-spacing:-0.5px}
+nav .logo span{color:var(--accent)}
+nav ul{list-style:none;display:flex;gap:2rem}
+nav ul a{color:var(--text-muted);font-size:.9rem;font-weight:500;transition:color .2s}
+nav ul a:hover{color:var(--text)}
+
+/* ── HERO ── */
+.hero{
+  min-height:100vh;display:flex;align-items:center;justify-content:center;
+  text-align:center;padding:6rem 2rem 4rem;
+  position:relative;
+}
+.hero::before{
+  content:'';position:absolute;
+  width:600px;height:600px;
+  background:radial-gradient(circle,rgba(79,143,255,0.08) 0%,transparent 70%);
+  top:10%;left:50%;transform:translateX(-50%);
+  pointer-events:none;
+}
+.hero h1{
+  font-family:'Sora',sans-serif;font-size:clamp(2.5rem,6vw,4.5rem);
+  font-weight:800;letter-spacing:-2px;line-height:1.1;
+  margin-bottom:1.25rem;
+}
+.hero h1 .line2{color:var(--accent);display:block}
+.hero .subtitle{
+  font-size:1.15rem;color:var(--text-muted);max-width:560px;margin:0 auto 2rem;
+  line-height:1.7;
+}
+.hero .tags{display:flex;gap:.6rem;flex-wrap:wrap;justify-content:center;margin-bottom:2.5rem}
+.hero .tag{
+  padding:.4rem .9rem;border-radius:99px;font-size:.8rem;font-weight:500;
+  border:1px solid var(--border);color:var(--text-muted);
+  background:var(--bg-card);
+}
+.hero .cta-row{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap}
+.btn{
+  display:inline-flex;align-items:center;gap:.5rem;
+  padding:.75rem 1.75rem;border-radius:99px;font-weight:600;font-size:.9rem;
+  transition:all .25s;cursor:pointer;border:none;
+}
+.btn-primary{background:var(--accent);color:#fff}
+.btn-primary:hover{background:#3a7aee;color:#fff;transform:translateY(-2px);box-shadow:0 8px 24px rgba(79,143,255,0.3)}
+.btn-outline{background:transparent;border:1px solid var(--border);color:var(--text)}
+.btn-outline:hover{border-color:var(--accent);color:var(--accent);transform:translateY(-2px)}
+
+/* ── SECTIONS ── */
+section{padding:5rem 2rem}
+.container{max-width:1100px;margin:0 auto}
+.section-label{
+  font-family:'Sora',sans-serif;font-size:.8rem;font-weight:600;
+  text-transform:uppercase;letter-spacing:3px;color:var(--accent);
+  margin-bottom:.75rem;
+}
+.section-title{
+  font-family:'Sora',sans-serif;font-size:clamp(1.8rem,4vw,2.5rem);
+  font-weight:700;letter-spacing:-1px;margin-bottom:1rem;
+}
+.section-desc{color:var(--text-muted);max-width:600px;margin-bottom:3rem;font-size:1.05rem}
+
+/* ── PROJECT CARDS ── */
+.projects-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:1.5rem}
+.card{
+  background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius);
+  padding:2rem;transition:all .3s;position:relative;overflow:hidden;
+}
+.card:hover{
+  border-color:rgba(79,143,255,0.3);background:var(--bg-card-hover);
+  transform:translateY(-4px);
+  box-shadow:0 12px 40px rgba(0,0,0,0.4);
+}
+.card .card-icon{
+  width:48px;height:48px;border-radius:12px;
+  display:flex;align-items:center;justify-content:center;
+  font-size:1.4rem;margin-bottom:1.25rem;
+}
+.card h3{font-family:'Sora',sans-serif;font-size:1.2rem;font-weight:700;margin-bottom:.4rem;letter-spacing:-0.3px}
+.card .card-course{font-size:.8rem;color:var(--accent);font-weight:500;margin-bottom:.75rem}
+.card p{color:var(--text-muted);font-size:.92rem;line-height:1.65;margin-bottom:1.25rem}
+.card .tech-tags{display:flex;flex-wrap:wrap;gap:.4rem}
+.card .tech-tag{
+  font-size:.75rem;padding:.25rem .6rem;border-radius:6px;
+  background:rgba(79,143,255,0.1);color:var(--accent);font-weight:500;
+}
+.card .tech-tag.green{background:rgba(34,201,151,0.1);color:var(--accent2)}
+
+/* ── SKILLS ── */
+.skills-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.25rem}
+.skill-card{
+  background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius);
+  padding:1.5rem;transition:all .3s;
+}
+.skill-card:hover{border-color:rgba(79,143,255,0.3);transform:translateY(-2px)}
+.skill-card h4{
+  font-family:'Sora',sans-serif;font-weight:600;font-size:.95rem;
+  margin-bottom:.75rem;display:flex;align-items:center;gap:.5rem;
+}
+.skill-card .items{color:var(--text-muted);font-size:.88rem;line-height:1.8}
+
+/* ── ABOUT ── */
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:start}
+.about-text p{color:var(--text-muted);margin-bottom:1rem;font-size:1rem;line-height:1.75}
+.about-text strong{color:var(--text)}
+.about-details{display:flex;flex-direction:column;gap:1rem}
+.detail-card{
+  background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius);
+  padding:1.25rem 1.5rem;
+}
+.detail-card .label{font-size:.75rem;text-transform:uppercase;letter-spacing:2px;color:var(--text-muted);margin-bottom:.3rem}
+.detail-card .value{font-family:'Sora',sans-serif;font-weight:600;font-size:1rem}
+
+/* ── CONTACT ── */
+.contact-section{text-align:center}
+.contact-links{display:flex;gap:1.25rem;justify-content:center;flex-wrap:wrap;margin-top:2rem}
+.contact-link{
+  display:flex;align-items:center;gap:.6rem;
+  padding:.9rem 1.5rem;border-radius:var(--radius);
+  background:var(--bg-card);border:1px solid var(--border);
+  color:var(--text);font-weight:500;font-size:.92rem;
+  transition:all .3s;
+}
+.contact-link:hover{
+  border-color:var(--accent);color:var(--accent);
+  transform:translateY(-2px);box-shadow:0 8px 24px rgba(0,0,0,0.3);
+}
+
+/* ── FOOTER ── */
+footer{
+  text-align:center;padding:3rem 2rem;
+  border-top:1px solid var(--border);
+  color:var(--text-muted);font-size:.85rem;
+}
+
+/* ── ANIMATIONS ── */
+.fade-in{opacity:0;transform:translateY(30px);transition:all .7s cubic-bezier(.16,1,.3,1)}
+.fade-in.visible{opacity:1;transform:translateY(0)}
+
+/* ── RESPONSIVE ── */
+@media(max-width:768px){
+  nav ul{gap:1rem}
+  .about-grid{grid-template-columns:1fr}
+  .hero h1{font-size:2.2rem}
+  section{padding:3.5rem 1.25rem}
+}
+@media(max-width:480px){
+  nav ul{display:none}
+  .projects-grid{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="inner">
+    <div class="logo"><span>S</span>R</div>
+    <ul>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div>
+    <h1>
+      Shriraag Rangu
+      <span class="line2">IT Student & Builder</span>
+    </h1>
+    <p class="subtitle">
+      BSc student at the University of Auckland, building things with SQL, Python, Tableau, and whatever else the project needs. Fluent in English and Telugu.
+    </p>
+    <div class="tags">
+      <span class="tag">SQL</span>
+      <span class="tag">Python</span>
+      <span class="tag">Tableau</span>
+      <span class="tag">Figma</span>
+      <span class="tag">Excel</span>
+      <span class="tag">Project Management</span>
+    </div>
+    <div class="cta-row">
+      <a href="#projects" class="btn btn-primary">View Projects ↓</a>
+      <a href="#contact" class="btn btn-outline">Get in Touch</a>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="container">
+    <div class="section-label">Portfolio</div>
+    <h2 class="section-title">Academic Projects</h2>
+    <p class="section-desc">Hands-on work from my degree covering systems analysis, data visualisation, project management, and programming.</p>
+
+    <div class="projects-grid">
+
+      <div class="card fade-in">
+        <div class="card-icon" style="background:rgba(79,143,255,0.12)">🏥</div>
+        <h3>VitalCare - Health Management System</h3>
+        <div class="card-course">INFOSYS 222 / INFOSYS 220</div>
+        <p>Led systems analysis for a 6-member team building a health management app. Defined 6 use cases, designed mobile and desktop prototypes in Figma, created ERDs, and managed sprints via Trello. Final deliverable was 60+ pages.</p>
+        <div class="tech-tags">
+          <span class="tech-tag">Figma</span>
+          <span class="tech-tag">UML</span>
+          <span class="tech-tag">ERD</span>
+          <span class="tech-tag green">Trello</span>
+          <span class="tech-tag">Systems Analysis</span>
+        </div>
+      </div>
+
+      <div class="card fade-in">
+        <div class="card-icon" style="background:rgba(34,201,151,0.12)">📊</div>
+        <h3>Pokemon Data Analysis & Website</h3>
+        <div class="card-course">INFOMGMT 192</div>
+        <p>Analysed 800+ Pokemon records in Tableau, building 5 interactive dashboards covering type distributions, stat comparisons, and performance trends. Designed a multi-page Wix website with embedded Tableau Public visualisations.</p>
+        <div class="tech-tags">
+          <span class="tech-tag">Tableau</span>
+          <span class="tech-tag green">Wix</span>
+          <span class="tech-tag">Excel</span>
+          <span class="tech-tag">Data Viz</span>
+        </div>
+      </div>
+
+      <div class="card fade-in">
+        <div class="card-icon" style="background:rgba(255,165,0,0.12)">📋</div>
+        <h3>NAC Scooter Launch & AET Hot-Site Relocation</h3>
+        <div class="card-course">OPSMGMT 357</div>
+        <p>Built end-to-end project plans with WBS, critical path analysis, resource allocation, and cost-schedule optimisation. Delivered two professional reports with Gantt charts and cash-flow analysis, achieving 18.4% cost reduction.</p>
+        <div class="tech-tags">
+          <span class="tech-tag">Excel</span>
+          <span class="tech-tag">Gantt Charts</span>
+          <span class="tech-tag green">WBS</span>
+          <span class="tech-tag">Risk Analysis</span>
+        </div>
+      </div>
+
+      <div class="card fade-in">
+        <div class="card-icon" style="background:rgba(168,85,247,0.12)">🎲</div>
+        <h3>Yacht Dice Game</h3>
+        <div class="card-course">COMPSCI 101</div>
+        <p>Modular Python game with dice simulation, category-based scoring, input validation, and persistent high-score tracking via file I/O. Clean code across 8 functions with no global state.</p>
+        <div class="tech-tags">
+          <span class="tech-tag">Python</span>
+          <span class="tech-tag green">File I/O</span>
+          <span class="tech-tag">OOP</span>
+        </div>
+      </div>
+
+      <div class="card fade-in">
+        <div class="card-icon" style="background:rgba(236,72,153,0.12)">❓</div>
+        <h3>Quiz Game</h3>
+        <div class="card-course">Personal Project - GitHub</div>
+        <p>Multi-file console application using dictionaries and lists to manage questions, scoring, and replayability. Built with clean separation of concerns across multiple modules.</p>
+        <div class="tech-tags">
+          <span class="tech-tag">Python</span>
+          <span class="tech-tag green">GitHub</span>
+          <span class="tech-tag">Modular Design</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="container">
+    <div class="section-label">Toolkit</div>
+    <h2 class="section-title">Technical Skills</h2>
+    <p class="section-desc">What I work with day to day across coursework and personal projects.</p>
+
+    <div class="skills-grid">
+      <div class="skill-card fade-in">
+        <h4>💾 Languages & Databases</h4>
+        <div class="items">SQL (proficient), Python, R, Java, HTML/CSS</div>
+      </div>
+      <div class="skill-card fade-in">
+        <h4>📈 Data & Visualisation</h4>
+        <div class="items">Tableau, Power BI, Excel (pivot tables, VLOOKUP), Pandas, Statistical Analysis</div>
+      </div>
+      <div class="skill-card fade-in">
+        <h4>🎨 Systems & Design</h4>
+        <div class="items">ERD / Relational Modelling, UML, Use Case Analysis, Figma, Wix</div>
+      </div>
+      <div class="skill-card fade-in">
+        <h4>📋 Project Management</h4>
+        <div class="items">Gantt Charts, Critical Path Analysis, WBS, Risk Assessment, Trello, Agile/Scrum</div>
+      </div>
+      <div class="skill-card fade-in">
+        <h4>🧠 Concepts</h4>
+        <div class="items">Data Structures, OOP, Boolean Logic, Business Systems Analysis, IT Infrastructure</div>
+      </div>
+      <div class="skill-card fade-in">
+        <h4>🔧 Tools</h4>
+        <div class="items">Git/GitHub, VS Code, Microsoft Office Suite, Google Workspace</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="container">
+    <div class="section-label">Background</div>
+    <h2 class="section-title">About Me</h2>
+
+    <div class="about-grid">
+      <div class="about-text fade-in">
+        <p>I'm a BSc student at the <strong>University of Auckland</strong> studying Computer and Information Technology Administration and Management. My coursework spans database systems, data wrangling, business systems analysis, and project management.</p>
+        <p>Outside of uni, I've worked in retail and hospitality for 4+ years, which taught me how to communicate clearly, solve problems under pressure, and work in fast-moving teams. I've also been volunteering with the <strong>New Zealand Telugu Association</strong> since 2020, organising cultural events for the Auckland community.</p>
+        <p>I'm fluent in <strong>English and Telugu</strong>. Telugu is widely spoken in Hyderabad, Bangalore, and across major IT hubs in India, which is a genuine advantage for working with teams in that region.</p>
+        <p>When I'm not studying, you'll find me at the gym, playing cricket, watching football, cooking, or socialising with mates.</p>
+      </div>
+      <div class="about-details fade-in">
+        <div class="detail-card">
+          <div class="label">University</div>
+          <div class="value">University of Auckland</div>
+        </div>
+        <div class="detail-card">
+          <div class="label">Degree</div>
+          <div class="value">BSc - Computer/IT Administration & Management</div>
+        </div>
+        <div class="detail-card">
+          <div class="label">Expected Graduation</div>
+          <div class="value">June 2027</div>
+        </div>
+        <div class="detail-card">
+          <div class="label">Languages</div>
+          <div class="value">English & Telugu (fluent)</div>
+        </div>
+        <div class="detail-card">
+          <div class="label">Location</div>
+          <div class="value">Auckland, New Zealand</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="contact-section">
+  <div class="container">
+    <div class="section-label">Get in Touch</div>
+    <h2 class="section-title">Let's Connect</h2>
+    <p class="section-desc" style="margin:0 auto 1rem;text-align:center">Open to internship opportunities, collaborations, and conversations about tech.</p>
+
+    <div class="contact-links">
+      <a href="mailto:raagarangu@gmail.com" class="contact-link">
+        ✉️&ensp;raagarangu@gmail.com
+      </a>
+      <a href="https://www.linkedin.com/in/raaga-rangu-560933276/" target="_blank" class="contact-link">
+        💼&ensp;LinkedIn
+      </a>
+      <a href="https://github.com/shriraag-rangu" target="_blank" class="contact-link">
+        🐙&ensp;GitHub
+      </a>
+      <a href="tel:+64275940289" class="contact-link">
+        📱&ensp;(+64) 027 594 0289
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>Shriraag Rangu &middot; 2026 &middot; Auckland, NZ</p>
+</footer>
+
+<script>
+// Scroll-based fade-in
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); } });
+}, { threshold: 0.1 });
+document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
